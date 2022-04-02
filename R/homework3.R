@@ -1,5 +1,4 @@
-install.packages("ggplot2")
-install.packages("dplyr")
+
 library(ggplot2)
 library(dplyr)
 midwest_raw<-as.data.frame(ggplot2::midwest)
@@ -11,3 +10,4 @@ midwest_new %>% arrange(desc(adultper)) %>%
 midwest_new<-midwest_new %>%
   mutate(adultgrade=ifelse(adultper>=70,"large",
                            ifelse(adultper>=60,"middle","small")))
+#21812167 ¿Ø¥Ÿ¿∫ 
