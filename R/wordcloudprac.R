@@ -23,11 +23,15 @@ data <- gsub('”',"",data)
 data <- gsub('[~!@#$%^&*()_+=?]<>','',data)
 #data <- gsub("[A-Za-z]","",data)
 data<-gsub("가능성","",data)
+
+#21812167 유다은
+#워드클라우드 실습(6) 18p
 write(unlist(data),"data2.txt")
 data2<-read.table("data2.txt")
 wordcount<-table(data2)
 wordcloud(names(wordcount),freq=wordcount,scale=c(5,1),rot.per=0.25,min.freq=3,random.order=F,random.color=T,colors=brewer.pal(9,"Set1"))
 
+#워드클라우드 실습(9) 20p
 library(wordcloud2)
 wordcloud2(data=wordcount,size=1,shape="circle", color="random-dark", backgroundColor="grey", ellipticity = 0.3, rotateRatio=0.5)
 
