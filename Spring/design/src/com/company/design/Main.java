@@ -1,32 +1,42 @@
 package com.company.design;
 
 import com.company.design.adpater.*;
+import com.company.design.aop.AopBrowser;
+import com.company.design.proxy.Browser;
+import com.company.design.proxy.BrowserProxy;
+import com.company.design.proxy.IBrowser;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
 
     public static void main(String[] args) {
-//	// write your code here
-//        AClazz aClazz=new AClazz();
-//        BClazz bClazz=new BClazz();
-//
-//        SocketClient aClient=aClazz.getSocketClient();
-//        SocketClient bClient=bClazz.getSocketClient();
-//
-//        System.out.println("두 개의 객체가 동일한가요?");
-//        System.out.println(aClient.equals(bClient));
-//
-        HairDryer hairDryer=new HairDryer();
-        connect(hairDryer);
-        //에어컨과 클리너는 220v 라서 connect 함수를 이용하면 바로 연결이 되지 않는다.
-        //그래서 adpater 클래스를 이용해서 220v에서도 110v를 이용할 수 있게 만들어 준다.
-        Aircon aircon=new Aircon();
-        Electronic110V airAdapter=new SocketAdapter(aircon);
-        connect(airAdapter);
 
-        Cleaner cleaner=new Cleaner();
-        Electronic110V cleanerAdapter=new SocketAdapter(cleaner);
-        connect(cleanerAdapter);
+//        Browser browser=new Browser("www.naver.com");
+//        browser.show();
+//        IBrowser browser=new BrowserProxy("www.naver.com");
+//        browser.show();
+//        browser.show();
+//        browser.show();
 
+        AtomicLong start=new AtomicLong();
+        AtomicLong end=new AtomicLong();
+
+        IBrowser aopBrowser=new AopBrowser("www.naver.com",
+                ()->{ //runnable 람다식으로 표현
+                    System.out.println("before");
+                    start.set(System.currentTimeMillis());
+
+                },
+                ()->{
+                    long now=System.currentTimeMillis();
+                    end.set(now-start.get());
+                }
+        );
+        aopBrowser.show();
+        System.out.println("loading time="+end.get());
+        aopBrowser.show();
+        System.out.println("loading time="+end.get());
     }
     public static void connect(Electronic110V electronic110V){
         electronic110V.powerOn();
