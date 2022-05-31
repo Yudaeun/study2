@@ -2,9 +2,17 @@ package com.company.design;
 
 import com.company.design.adpater.*;
 import com.company.design.aop.AopBrowser;
+import com.company.design.decorator.*;
+import com.company.design.facade.Ftp;
+import com.company.design.facade.Reader;
+import com.company.design.facade.SftpClient;
+import com.company.design.facade.Writer;
+import com.company.design.observer.Button;
+import com.company.design.observer.IButtonListener;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
 import com.company.design.proxy.IBrowser;
+import com.company.design.strategy.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -12,31 +20,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        Browser browser=new Browser("www.naver.com");
-//        browser.show();
-//        IBrowser browser=new BrowserProxy("www.naver.com");
-//        browser.show();
-//        browser.show();
-//        browser.show();
+     Encoder encoder=new Encoder();
+     EncodingStrategy base64=new Base64Strategy();
+     EncodingStrategy normal=new NormalStrategy();
 
-        AtomicLong start=new AtomicLong();
-        AtomicLong end=new AtomicLong();
+     String message="hello java";
+     encoder.setEncodingStrategy(base64);//base64를 사용한다.
+     String base64Result=encoder.getMessage(message);
+     System.out.println(base64Result);
 
-        IBrowser aopBrowser=new AopBrowser("www.naver.com",
-                ()->{ //runnable 람다식으로 표현
-                    System.out.println("before");
-                    start.set(System.currentTimeMillis());
+     encoder.setEncodingStrategy(normal);//normal을 사용한다.
+     String normalResult=encoder.getMessage(message);
+     System.out.println(normalResult);
 
-                },
-                ()->{
-                    long now=System.currentTimeMillis();
-                    end.set(now-start.get());
-                }
-        );
-        aopBrowser.show();
-        System.out.println("loading time="+end.get());
-        aopBrowser.show();
-        System.out.println("loading time="+end.get());
+     encoder.setEncodingStrategy(new AppendStrategy());
+     String appendResult=encoder.getMessage(message);
+     System.out.println(appendResult);
     }
     public static void connect(Electronic110V electronic110V){
         electronic110V.powerOn();
