@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function outer(){
+            //클로저: 함수의 리턴값으로 함수를 받는 경우
+            //리턴되는 내부 함수
+            let x=10;
+            let inner=function(){
+                console.log(x);
+            } //outer보다 inner가 더 오래 유지 된다. 
+            return inner; //클로저
+        }
+        let q=outer();
+        //outer 함수의 호출이 끝났기 때문에 원칙적으로 x,y 같은 변수의 사용이 불가하다.
+        //리턴 받은 값이 함수이기 때문에 계속해서 값을 사용할 수 있다.
+        q(); //10이 출력된다. 함수가 계속 유지된다.
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

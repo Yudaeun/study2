@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let cnt=0;
+        function del(that){
+            let parent=that.parentNode;
+            parent.removeChild(that);
+        }
+        function addNode(params){
+            let h1=document.createElement('h1');
+            h1.setAttribute('onclick','del(this)');
+            let text=document.createTextNode('I want to go back to the deep ground...'+(++cnt));
+            
+            let a=document.createElement('a');
+            a.setAttribute('href','#');
+            let gomsg=document.createTextNode('gogo');
+            a.appendChild(gomsg);
+            
+            h1.appendChild(text);
+            document.getElementById('result').appendChild(h1).appendChild(a);
+        }
+        function changeColor(){
+            //js에서 css조정하기
+            let title=document.getElementById('title');
+            title.style.color='green';
+            title.style.fontFamily='바탕체';
+            title.style.fontSize='30pt';
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title">DOM TEST</h1>
+    <input type="button" value="changecolor" onclick="changeColor()">
+    <input type="button" value="add" onclick="addNode()"><hr>
+    <div id="result" style="width:500px;height:300px;border:2px pink solid;overflow:auto;"></div>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function startWork(){
+            let time=new Date();
+            //get infomation of date of start time
+            console.log(time);
+
+        }
+        function stopWork(){
+            clearInterval(); //stop the work that start as setInterval()
+        }
+        
+        let t=setInterval(startWork,1000); //execute the startWork() as 1 second
+        setTimeout(stopWork,5000); //execute the function after 5 seconds
+        
+    </script>
+</head>
+<body>
+    <h1>Set Interval Test</h1>
+    <button onclick="stopWork()">stop</button>
+
+</body>
+</html>l

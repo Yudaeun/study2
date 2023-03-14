@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //이미지 저장할 배열
+        let photos=new Array(); //[1,2,3...]
+        let index=0; //현재 보여지고 있는 이미지 인덱스
+
+        photos[0]='https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202301/04/bemypet/20230104190107021brrt.png';
+        photos[1]='https://flexible.img.hani.co.kr/flexible/normal/970/517/imgdb/original/2022/0208/9616442939930736.jpg';
+        photos[2]='https://cdn.newspenguin.com/news/photo/202101/3899_12249_529.jpg';
+        photos[3]='https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_261/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg';
+        photos[4]='https://t2.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/kVe/image/UolfXmu00pvdqH5BRwX_dIRJK10.jpg';
+        photos[5]='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPqQhze4qVXXRvU7KFR1wdSZUB74LBRVHwCPa30lvkZg9u9VLXNDnTtWhMkVN2834cTeY&usqp=CAU';
+        photos[6]='https://images.mypetlife.co.kr/content/uploads/2020/04/09150809/25015673_170507777039538_6133766078158864384_n1.jpg';
+
+        function previous(){
+            let pre=document.getElementById("pic");
+            if(index==0){
+                al();
+                return;
+            }
+            pre.src=photos[--index];
+        }
+        function next(){
+            let next=document.getElementById("pic");
+            if(index==6){
+                al();
+                return;
+            }
+            next.src=photos[++index];
+        }
+        function first(){
+            let first=document.getElementById("pic");
+            index=0;
+            first.src="http://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg";
+        }
+        function last(){
+            let last=document.getElementById("pic");
+            index=6;
+            last.src=photos[6];
+        }
+        function al(){
+            alert('This is last Cat!!!');
+        }
+    </script>
+</head>
+<body>
+    <h1>Image Album</h1>
+    <img id="pic" src="http://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg" alt="첫번째 cat" style="width:300px;height:300px;">
+    <hr>
+    <input type="button" value="previous" onclick="previous()">
+    <input type="button" value="first" onclick="first()">
+    <input type="button" value="last" onclick="last()">
+    <input type="button" value="next" onclick="next()">
+</body>
+</html>

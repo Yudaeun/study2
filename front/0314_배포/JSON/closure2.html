@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="toggle">toggle</button>
+    <div id="div" style="width:100px;height:100px;background:pink;"></div>
+    <script>
+        //사용 범위가 끝난 값을 계속해서 사용할 수 있도록 해주는 기능
+        let toggle=document.getElementById('toggle');
+        let div=document.getElementById('div');
+
+        let work=(function(){
+            let isShow=false; //1. local variable
+            return function(){ //return the closure
+                //closure
+                div.style.display=isShow?'block':'none';
+                isShow=!isShow; //change the local variable statement
+            }
+        })(); 
+        
+        //2. set the closure function at event handler
+        toggle.onclick=work;
+
+
+    </script>
+</body>
+</html>
