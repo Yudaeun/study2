@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //2. 함수 표현식=함수 이름이 없다.
+        var hello=function(){
+            console.log('hi');
+        }
+        hello();
+        function gogo(){
+            console.log(123);
+        }
+        //2. 함수를 파라미터로 사용
+        function funtest(some){
+            some();
+        }
+        funtest(hello); //표현식 함수
+        funtest(gogo); //선언식 함수
+        funtest(function(){
+            //익명함수
+            console.log('welcome!!!');
+        });
+        //3. 
+        function funtest2(params){
+            var result=1234;
+            return function(){
+                console.log('result is...'+result);
+            }
+        }
+        var ff=funtest2();
+        ff();
+        funtest2();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

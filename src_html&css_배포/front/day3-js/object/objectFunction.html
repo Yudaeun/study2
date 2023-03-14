@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        var user={
+            name:'tommy lee',
+            age: 20,
+            showInfo: function (){
+                document.write("name:"+this.name+"<br>")
+                document.write("age:"+this.age+"<br>")
+            }
+        };
+        var user2={
+            name:'tommy lee',
+            age: 20,
+            showInfo: function (){
+                document.write("name:"+this.name+"<br>")
+                document.write("age:"+this.age+"<br>")
+            }
+        };
+        //2. 함수를 이용해서 객체를 생성한다. 함수가 생성자 역할을 한다.
+        //함수이름은 대문자로 시작하고 인스턴스 생성시 자동으로 호출된다.
+        //장점: 코드 재사용 가능
+        //클래스 정의
+        function User(name,age){
+            this.name=name;
+            this.age=age;
+            this.showInfo=function(){
+                document.write("name:"+this.name+", age: "+this.age+"<br>")
+            }
+        }
+        //인스턴스 생성
+        var u1=new User('mimi',20)
+        var u2=new User('riri',50)
+        var u3=new User('harry',20)
+        u1.showInfo();
+        u2.showInfo();
+        u3.showInfo();
+
+        
+        function Circle(r){
+            this.r=r;
+            this.getCircum=function(){
+                document.write(this.r*3.14+"<br>");
+            }    
+            this.getArea=function(){
+                document.write(this.r*this.r*3.14+"<br>");
+            }
+        }
+        var r1=new Circle(5);
+        var r2=new Circle(10);
+        r1.getArea();
+        r1.getCircum();
+        r2.getArea();
+        r2.getCircum();
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

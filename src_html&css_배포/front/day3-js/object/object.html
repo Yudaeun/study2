@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //3. Object 객체를 이용하는 방법
+
+        var v1=new Object();
+        v1.name="riri";
+        v1.age=25;
+        v1.showInfo=function(){
+            document.write("name: "+this.name+ ", age: "+this.age)
+        }
+        v1.showInfo();
+        console.log(v1.age);
+        console.log(v1.name);
+        console.log(v1['name']);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

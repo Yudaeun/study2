@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function max(a,b){
+            var maxNum;
+            if(a>b)
+                maxNum=a;
+            else
+                maxNum=b;
+            return maxNum;
+        }
+        console.log(max(3,2));
+        function printName(name){
+            document.write('hello!'+name);
+        }
+        printName('riri');
+        function getArea(r){
+            return r*3.14*r;
+        }
+        console.log(getArea(3));
+        function reverse(flag){
+            return flag==true?false:true;
+        }
+        console.log(reverse(false));
+        function sum(arr){
+            var sum=0;
+            for(let i=0;i<arr.length;i++){
+                sum+=arr[i];
+            }
+            return sum;
+        }
+        console.log(sum([1,2,3]));
+        function loopSstring(msg,count){
+            for(let i=0;i<count;i++){
+                document.write(msg+"<br>");
+            }
+        }
+        loopSstring('riri',3);
+        function calc(a,b,op){
+            if (op=='+')
+                var sum=a+b;
+            else if(op=='-')
+                var sum=a-b;
+            else if(op=='*')
+                var sum=a*b;
+            else if(op=='/')
+                var sum=a/b;
+            alert(sum);
+        }
+        calc(2,3,'+');
+        function getLength(str){
+            document.write(str.length);
+        }
+        getLength('hello');
+        function showAlert(msg){
+            alert(msg);
+        }
+        showAlert('hello');
+        function absSum(x,y){
+            return Math.abs(x)+Math.abs(y);
+        }
+        console.log(absSum(3,2));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
