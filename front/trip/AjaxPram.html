@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getXHR(){
+            xhr=new XMLHttpRequest();
+        }
+        function sendGet(){
+            let name=document.getElementById('name');
+            let address=document.getElementById('address');
+            let param="?name="+name.value+"&address="+address.value;
+            //let param=`?name=${name.value}&address=${address.value}`;
+            
+            getXHR();
+            xhr.open('get','paramTest.jsp'+param,true);
+            xhr.onreadystatechange=callback;
+            xhr.send(null);
+            name.value='';
+            address.value='';
+        }
+        function sendPost(){
+            let name=document.getElementById('name');
+            let address=document.getElementById('address');
+            let param= `name=${name.value}&address=${address.value}`;
+
+            getXHR();
+            xhr.open('post','paramTest.jsp',true);
+            xhr.onreadystatechange=callback;
+            //post 방식으로 파라미터를 보낼 때 필요한 부분
+            xhr.setRequestHeader("Content-Type",
+                "application/x-www-form-urlencoded;charset=utf-8");
+            xhr.send(param);
+            name.value='';
+            address.value='';
+        }
+        function callback(){
+            if (xhr.readyState==4&&xhr.status==200){
+                let result=document.getElementById("result");
+                result.innerHTML="<h2>"+xhr.responseText;+"</h2>" //div 태그에 값을 넣을 땐 innerHTML
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1> AJAX Parameter Test </h1>
+    name: <input type="text" id="name"><br>
+    address= <input type="text" id="address"> <br>
+    <button onclick="sendGet()">send get</button>
+    <button onclick="sendPost()">send post</button>
+    <div id="result"></div>
+</body>
+</html>
