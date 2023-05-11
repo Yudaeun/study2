@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper file : query가 들어 있음 -->
+<mapper namespace="com.todolist.mvc.mapper.TODOMapper">
+
+	<select id="allList" resultType="Todo">
+		select * from todolist order by no desc
+	</select>
+	
+	<select id="allListByUser" parameterType="string" resultType="Todo" >
+        select * from todolist where userid = #{userid}
+    </select>
+
+	<select id="find" parameterType="string" resultType="Todo" >
+		select * from todolist where no = #{no}
+	</select>
+
+	<insert id="add" parameterType="Todo">
+		insert into todolist values(null,#{content}, #{userid},sysdate(),null,'N')
+	</insert>
+	
+	<delete id="delete" parameterType="string">
+		delete from todolist where no = #{no}
+	</delete>
+	<delete id="deleteAll" parameterType="string">
+		delete from todolist
+	</delete>
+    
+    <update id="modify" parameterType="Todo">
+    update todolist set content = #{content} where no = #{no}
+</update>
+	<update id="complete" parameterType="Todo">
+		update todolist set done='Y',edate=sysdate() where no = #{no}
+	</update>
+    
+
+</mapper>
